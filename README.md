@@ -6,7 +6,7 @@ Since Ruby strings are mutable, every string literal must allocate a new string 
 
 Cheap Strings freezes your string literals and then reuses the same object every time - making your program faster and reducing GC pressure by not creating huge amounts of objects.
 
-## Benchmark
+## Benchmarks
 
 The benchmarks below use this common setup code:
 
@@ -73,7 +73,7 @@ def object_bench(name)
   ObjectSpace.count_objects(after)
   GC.enable
 
-  printf "%20s %6d -> %6d (+%8d)\n", name, before[:T_STRING], after[:T_STRING], after[:T_STRING] - before[:T_STRING]
+  printf "%20s %8d -> %8d (+%8d)\n", name, before[:T_STRING], after[:T_STRING], after[:T_STRING] - before[:T_STRING]
 end
 
 object_bench "regular strings" do
